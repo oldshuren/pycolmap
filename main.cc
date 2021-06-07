@@ -18,6 +18,13 @@ PYBIND11_MODULE(pycolmap, m) {
           py::arg("max_error_px") = 12.0,
           "Absolute pose estimation with non-linear refinement.");
 
+    // Absolute pose with covariance.
+    m.def("absolute_pose_estimation_with_covariance", &absolute_pose_estimation_with_covariance,
+          py::arg("points2D"), py::arg("points3D"),
+          py::arg("camera_dict"),
+          py::arg("max_error_px") = 12.0,
+          "Absolute pose estimation with non-linear refinement.");
+
     // Essential matrix.
     m.def("essential_matrix_estimation", &essential_matrix_estimation,
           py::arg("points2D1"), py::arg("points2D2"),
@@ -30,7 +37,7 @@ PYBIND11_MODULE(pycolmap, m) {
           py::arg("points2D1"), py::arg("points2D2"),
           py::arg("max_error_px") = 4.0,
           "LORANSAC + 7-point algorithm.");
-    
+
     // Image-to-world and world-to-image.
     m.def("image_to_world", &image_to_world, "Image to world transformation.");
     m.def("world_to_image", &world_to_image, "World to image transformation.");
