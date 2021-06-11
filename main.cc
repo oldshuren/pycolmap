@@ -18,13 +18,6 @@ PYBIND11_MODULE(pycolmap, m) {
           py::arg("max_error_px") = 12.0,
           "Absolute pose estimation with non-linear refinement.");
 
-    // Absolute pose with covariance.
-    m.def("absolute_pose_estimation_with_covariance", &absolute_pose_estimation_with_covariance,
-          py::arg("points2D"), py::arg("points3D"),
-          py::arg("camera_dict"),
-          py::arg("max_error_px") = 12.0,
-          "Absolute pose estimation with non-linear refinement.");
-
     // Essential matrix.
     m.def("essential_matrix_estimation", &essential_matrix_estimation,
           py::arg("points2D1"), py::arg("points2D2"),
