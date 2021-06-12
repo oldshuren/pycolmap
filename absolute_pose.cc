@@ -94,7 +94,7 @@ py::dict absolute_pose_estimation(
     // Absolute pose refinement.
 	Eigen::Matrix3d tvec_covariance;
 	Eigen::Matrix4d qvec_covariance;
-	if (!RefineAbsolutePoseWithCovariance(abs_pose_refinement_options, inlier_mask, points2D, points3D, &qvec, &tvec, &camera, tvec_covariance.data(), qvec_covariance.data(), NULL)) {
+	if (!RefineAbsolutePose(abs_pose_refinement_options, inlier_mask, points2D, points3D, &qvec, &tvec, &camera, tvec_covariance.data(), qvec_covariance.data())) {
         return failure_dict;
     }
 
